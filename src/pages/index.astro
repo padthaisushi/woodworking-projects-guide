@@ -1,0 +1,202 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { CATEGORY_SLUGS, categorySlug } from "../lib/categories";
+
+const allArticles = (await getCollection("articles")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+const base = import.meta.env.BASE_URL;
+
+const featuredId = "woodworking-mistakes-beginners-make";
+const featured = allArticles.find((a) => a.id === featuredId);
+const articles = allArticles.filter((a) => a.id !== featuredId);
+
+const categories = Object.keys(CATEGORY_SLUGS) as (keyof typeof CATEGORY_SLUGS)[];
+const counts = Object.fromEntries(
+  categories.map((c) => [c, allArticles.filter((a) => a.data.category === c).length])
+);
+---
+<BaseLayout
+  title="Beginner-Friendly Woodworking Plans & Guides"
+  description="Practical, step-by-step woodworking guides: beginner projects, tool guides, techniques, and furniture builds."
+>
+  <Header />
+  <main>
+    <h1>Sawdust & Plans</h1>
+    <p class="intro">
+      Beginner-friendly woodworking projects, tool guides, and techniques — written for real workshops, not showrooms.
+    </p>
+
+    {
+      featured && (
+        <a href={`${base}articles/${featured.id}/`} class="featured">
+          <span class="featured-label">Start Here</span>
+          <span class="featured-title">{featured.data.title}</span>
+          <span class="featured-desc">{featured.data.description}</span>
+        </a>
+      )
+    }
+
+    <div class="filters" role="group" aria-label="Filter articles by category">
+      <button type="button" class="chip is-active" data-filter="all">
+        All <span class="count">{allArticles.length}</span>
+      </button>
+      {
+        categories.map((c) => (
+          <button type="button" class="chip" data-filter={categorySlug(c)}>
+            {c} <span class="count">{counts[c]}</span>
+          </button>
+        ))
+      }
+    </div>
+
+    <ul class="article-list">
+      {
+        articles.map((article) => (
+          <li data-category={categorySlug(article.data.category)}>
+            <a href={`${base}articles/${article.id}/`} class="card">
+              <span class={`badge badge--${categorySlug(article.data.category)}`}>
+                {article.data.category}
+              </span>
+              <span class="card-title">{article.data.title}</span>
+              <span class="card-desc">{article.data.description}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="empty-state" hidden>No articles in this category yet.</p>
+  </main>
+  <Footer />
+
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
+    const items = document.querySelectorAll<HTMLLIElement>(".article-list li");
+    const emptyState = document.querySelector<HTMLParagraphElement>(".empty-state");
+
+    function applyFilter(filter: string) {
+      chips.forEach((c) => c.classList.toggle("is-active", c.dataset.filter === filter));
+      let visibleCount = 0;
+      items.forEach((item) => {
+        const show = filter === "all" || item.dataset.category === filter;
+        item.hidden = !show;
+        if (show) visibleCount++;
+      });
+      if (emptyState) emptyState.hidden = visibleCount !== 0;
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => applyFilter(chip.dataset.filter ?? "all"));
+    });
+
+    const requested = new URLSearchParams(location.search).get("category");
+    if (requested && Array.from(chips).some((c) => c.dataset.filter === requested)) {
+      applyFilter(requested);
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .intro {
+    color: var(--color-muted);
+  }
+
+  .featured {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-decoration: none;
+    background: linear-gradient(135deg, #efe4cd, #f3ead9);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .featured-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+  }
+  .featured-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .featured-desc {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .chip {
+    font: inherit;
+    font-size: 0.85rem;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+  }
+  .chip .count {
+    color: var(--color-muted);
+    opacity: 0.7;
+  }
+  .chip.is-active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+  .chip.is-active .count {
+    color: #fff;
+    opacity: 0.85;
+  }
+
+  .article-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    text-decoration: none;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 10px rgba(138, 90, 43, 0.1);
+  }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .card-desc {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+
+  .empty-state {
+    color: var(--color-muted);
+    text-align: center;
+    padding: 2rem 0;
+  }
+</style>

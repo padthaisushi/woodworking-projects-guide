@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout
+  title="About Sawdust & Plans"
+  description="Why we write about woodworking and how we choose the plans and products we recommend."
+>
+  <Header />
+  <main>
+    <h1>About Sawdust & Plans</h1>
+    <p>
+      Sawdust & Plans is a small, independent site focused on one thing: practical, beginner-friendly
+      woodworking guidance. No showroom photos, no jargon-heavy tutorials — just clear, step-by-step
+      guides for the projects and problems real hobbyist woodworkers run into.
+    </p>
+    <p>
+      We research each topic carefully and link out to plans and products we believe are genuinely
+      useful. Some of those links are affiliate links, which means we may earn a small commission if
+      you make a purchase — at no extra cost to you. See our{" "}
+      <a href={`${base}privacy/`}>Privacy &amp; Affiliate Disclosure</a> page for details.
+    </p>
+  </main>
+  <Footer />
+</BaseLayout>

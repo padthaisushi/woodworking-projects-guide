@@ -1,0 +1,120 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const base = import.meta.env.BASE_URL;
+const { title, description, image = `${base}favicon.svg` } = Astro.props;
+const siteName = "Sawdust & Plans";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title} | {siteName}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:site_name" content={siteName} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- TODO: GoatCounterで本サイトを追加後、発行されたトラッキングコードに差し替える -->
+    <script
+      data-goatcounter="https://masashi55kg.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --color-bg: #f7f2e9;
+    --color-text: #2c2013;
+    --color-accent: #8a5a2b;
+    --color-muted: #756753;
+    --color-border: #e3d8c4;
+    --color-card-bg: #fffdf9;
+
+    --cat-beginner-projects-bg: #fdecc8;
+    --cat-beginner-projects-text: #8a5a12;
+    --cat-tools-materials-bg: #e4ded0;
+    --cat-tools-materials-text: #5c5240;
+    --cat-techniques-skills-bg: #dfe8da;
+    --cat-techniques-skills-text: #3f6b34;
+    --cat-furniture-storage-bg: #e7dcc9;
+    --cat-furniture-storage-text: #6b4423;
+    --cat-general-guides-bg: #e3e2df;
+    --cat-general-guides-text: #55524c;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  a {
+    color: var(--color-accent);
+  }
+  h1, h2, h3 {
+    line-height: 1.25;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge--beginner-projects {
+    background: var(--cat-beginner-projects-bg);
+    color: var(--cat-beginner-projects-text);
+  }
+  .badge--tools-materials {
+    background: var(--cat-tools-materials-bg);
+    color: var(--cat-tools-materials-text);
+  }
+  .badge--techniques-skills {
+    background: var(--cat-techniques-skills-bg);
+    color: var(--cat-techniques-skills-text);
+  }
+  .badge--furniture-storage {
+    background: var(--cat-furniture-storage-bg);
+    color: var(--cat-furniture-storage-text);
+  }
+  .badge--general-guides {
+    background: var(--cat-general-guides-bg);
+    color: var(--cat-general-guides-text);
+  }
+</style>

@@ -1,0 +1,194 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Disclosure from "../../components/Disclosure.astro";
+import AffiliateCTA from "../../components/AffiliateCTA.astro";
+import { categorySlug } from "../../lib/categories";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content, headings } = await render(article);
+const toc = headings.filter((h) => h.depth === 2);
+
+const allArticles = await getCollection("articles");
+const others = allArticles.filter((a) => a.id !== article.id);
+
+function relatedScore(a: (typeof others)[number]) {
+  const sharedKeywords = a.data.keywords.filter((k) => article.data.keywords.includes(k)).length;
+  const sameCategory = a.data.category === article.data.category ? 1 : 0;
+  return sharedKeywords * 2 + sameCategory;
+}
+
+const related = others
+  .map((a) => ({ a, score: relatedScore(a) }))
+  .sort((x, y) => y.score - x.score || y.a.data.publishDate.valueOf() - x.a.data.publishDate.valueOf())
+  .slice(0, 3)
+  .map(({ a }) => a);
+
+const base = import.meta.env.BASE_URL;
+const wordCount = article.body ? article.body.trim().split(/\s+/).length : 0;
+const readingMinutes = Math.max(1, Math.round(wordCount / 200));
+const catSlug = categorySlug(article.data.category);
+
+const canonicalURL = new URL(`${base}articles/${article.id}/`, Astro.site);
+const siteHome = new URL(base, Astro.site);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: article.data.publishDate.toISOString(),
+  author: { "@type": "Organization", name: "Sawdust & Plans" },
+  publisher: { "@type": "Organization", name: "Sawdust & Plans" },
+  mainEntityOfPage: canonicalURL.toString(),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteHome.toString() },
+    { "@type": "ListItem", position: 2, name: article.data.category, item: `${siteHome}?category=${catSlug}` },
+    { "@type": "ListItem", position: 3, name: article.data.title, item: canonicalURL.toString() },
+  ],
+};
+---
+<BaseLayout title={article.data.title} description={article.data.description}>
+  <Header />
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href={base}>Home</a> <span>/</span>
+      <a href={`${base}?category=${catSlug}`}>{article.data.category}</a> <span>/</span>
+      <span aria-current="page">{article.data.title}</span>
+    </nav>
+    <article>
+      <span class={`badge badge--${catSlug}`}>{article.data.category}</span>
+      <h1>{article.data.title}</h1>
+      <p class="meta">
+        {article.data.publishDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+        &middot; {readingMinutes} min read
+      </p>
+      <Disclosure />
+
+      {
+        toc.length > 2 && (
+          <nav class="toc" aria-label="Table of contents">
+            <p class="toc-title">In this guide</p>
+            <ol>
+              {toc.map((h) => (
+                <li>
+                  <a href={`#${h.slug}`}>{h.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+
+      <div class="content">
+        <Content />
+      </div>
+      <AffiliateCTA offerKey={article.data.offerKey} />
+    </article>
+
+    {
+      related.length > 0 && (
+        <section class="related">
+          <h2>Related Articles</h2>
+          <ul>
+            {related.map((r) => (
+              <li>
+                <span class={`badge badge--${categorySlug(r.data.category)}`}>{r.data.category}</span>
+                <a href={`${base}articles/${r.id}/`}>{r.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</BaseLayout>
+
+<style>
+  .breadcrumbs {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+  .breadcrumbs a {
+    color: var(--color-muted);
+  }
+  article > .badge {
+    margin-bottom: 0.6rem;
+  }
+  .meta {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+  }
+  .toc {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .toc-title {
+    margin: 0 0 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--color-muted);
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+  .toc li {
+    margin: 0.25rem 0;
+  }
+  .content :global(h2) {
+    margin-top: 2rem;
+    scroll-margin-top: 1rem;
+  }
+  .content :global(p) {
+    margin: 1rem 0;
+  }
+  .content :global(ul),
+  .content :global(ol) {
+    padding-left: 1.25rem;
+  }
+  .related {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .related h2 {
+    font-size: 1.1rem;
+  }
+  .related ul {
+    list-style: none;
+    padding: 0;
+  }
+  .related li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+</style>

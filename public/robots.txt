@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://padthaisushi.github.io/woodworking-projects-guide/sitemap-index.xml

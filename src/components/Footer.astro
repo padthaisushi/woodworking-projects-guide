@@ -1,0 +1,22 @@
+---
+const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
+---
+<footer>
+  <p>&copy; {year} Sawdust & Plans. All rights reserved.</p>
+  <p><a href={`${base}privacy/`}>Privacy & Affiliate Disclosure</a></p>
+</footer>
+
+<style>
+  footer {
+    max-width: 780px;
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+  footer a {
+    color: var(--color-muted);
+  }
+</style>
