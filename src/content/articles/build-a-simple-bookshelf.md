@@ -5,6 +5,15 @@ publishDate: 2026-08-17
 keywords: ["how to build a simple bookshelf", "DIY bookshelf plans", "beginner bookshelf woodworking project"]
 offerKey: "primary"
 category: "Furniture & Storage"
+faqs:
+  - question: "Do I need a back panel on a DIY bookshelf?"
+    answer: "Yes, strongly recommended. A full plywood back significantly improves rigidity and keeps the whole unit square over time, especially once loaded with books."
+  - question: "What joinery is best for a beginner bookshelf?"
+    answer: "Dado joints give the cleanest, strongest result, but pocket-hole joinery is a faster, beginner-friendly alternative that still produces a sturdy shelf."
+  - question: "Why do bookshelf shelves sag over time?"
+    answer: "Thin shelf boards over long unsupported spans bow under weight. Use thicker material or add a center support for wider shelves to prevent sagging."
+  - question: "How long does it take to build a simple bookshelf?"
+    answer: "A confident beginner can typically complete a basic bookshelf, including finishing time, over a weekend — roughly 4-6 hours of active work plus drying time for glue and finish."
 ---
 
 A basic bookshelf is a great step up from smaller projects — it introduces dado joints (or pocket-hole alternatives) and a larger-scale assembly while still being achievable for a confident beginner.

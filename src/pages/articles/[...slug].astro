@@ -62,6 +62,20 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 3, name: article.data.title, item: canonicalURL.toString() },
   ],
 };
+
+const faqs = article.data.faqs ?? [];
+const faqSchema =
+  faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
 ---
 <BaseLayout title={article.data.title} description={article.data.description}>
   <Header />
@@ -98,6 +112,21 @@ const breadcrumbSchema = {
       <div class="content">
         <Content />
       </div>
+
+      {
+        faqs.length > 0 && (
+          <section class="faqs">
+            <h2>Frequently Asked Questions</h2>
+            {faqs.map((f) => (
+              <details>
+                <summary>{f.question}</summary>
+                <p>{f.answer}</p>
+              </details>
+            ))}
+          </section>
+        )
+      }
+
       <AffiliateCTA offerKey={article.data.offerKey} />
     </article>
 
@@ -121,6 +150,7 @@ const breadcrumbSchema = {
 
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 </BaseLayout>
 
 <style>
@@ -190,5 +220,26 @@ const breadcrumbSchema = {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+  }
+  .faqs {
+    margin: 2rem 0;
+  }
+  .faqs h2 {
+    font-size: 1.15rem;
+  }
+  .faqs details {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.85rem 1.1rem;
+    margin: 0.6rem 0;
+  }
+  .faqs summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .faqs details p {
+    margin: 0.6rem 0 0;
+    color: var(--color-muted);
   }
 </style>

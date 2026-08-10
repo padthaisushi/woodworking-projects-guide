@@ -5,6 +5,15 @@ publishDate: 2026-08-22
 keywords: ["woodworking mistakes beginners make", "common beginner woodworking errors", "woodworking tips for beginners"]
 offerKey: "primary"
 category: "General Guides"
+faqs:
+  - question: "Why do my woodworking joints keep failing?"
+    answer: "Usually the wrong glue for the environment, under-clamping, or skipping a dry fit before gluing. Matching glue type to the project and clamping firmly resolves most joint failures."
+  - question: "Why does my stain look blotchy?"
+    answer: "Uneven sanding or skipping a pre-stain conditioner on blotch-prone woods like pine are the most common causes. Sanding is part of the finishing process, not just prep."
+  - question: "Should I buy tools before or after planning my project?"
+    answer: "After. Buying tools before knowing what a project needs is a common early-stage trap that drains budget without building skill — let your project list guide purchases."
+  - question: "How do I avoid wood warping or cracking later?"
+    answer: "Research wood movement basics before wide panel glue-ups, and leave appropriate gaps in outdoor projects to account for seasonal expansion and contraction."
 ---
 
 Most early woodworking frustration traces back to a small set of repeatable mistakes — recognizing them early saves a lot of wasted material and motivation.

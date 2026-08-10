@@ -18,6 +18,7 @@ const articles = defineCollection({
     keywords: z.array(z.string()),
     offerKey: z.string(),
     category: z.enum(CATEGORIES),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
   }),
 });
 
