@@ -29,7 +29,7 @@ Starting with small, achievable projects builds real skill and confidence faster
 7. **A step stool** — a compact project that introduces basic leg-and-frame construction.
 8. **A picture frame** — practices precise angled (miter) cuts.
 9. **A small tool tote or caddy** — practical, and reinforces box-building skills with a handle added.
-10. **A garden planter box** — slightly larger scale practice with straightforward joinery.
+10. **A garden planter box** — slightly larger scale practice with straightforward joinery. Our [cedar fence picket planter plan](../cedar-fence-picket-planter-box/) includes a full cut list.
 
 ## How to Choose Your First Project
 
