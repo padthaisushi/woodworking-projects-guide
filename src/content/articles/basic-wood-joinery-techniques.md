@@ -11,7 +11,7 @@ You don't need advanced joinery to build strong, good-looking projects — a han
 
 ## Core Joints to Learn First
 
-1. **Butt joint.** Two pieces joined at a simple right angle, usually reinforced with glue and screws or nails. Fast and forgiving, but the weakest joint on its own.
+1. **Butt joint.** Two pieces joined at a simple right angle, usually reinforced with glue and screws or nails. Fast and forgiving, but the weakest joint on its own. Pre-drill the screw holes so the end of the board doesn't crack — see [how to screw into wood without splitting](../screw-into-wood-without-splitting/).
 2. **Rabbet joint.** A notch cut into one piece so the other fits into it, increasing glue surface area and hiding some end grain — common in box and cabinet construction.
 3. **Dado joint.** A groove cut into a piece to hold a shelf or panel, common in bookshelves and cabinets for strong, self-aligning assembly.
 4. **Pocket-hole joint.** Uses angled screws through a drilled pocket hole — fast, strong, and beginner-friendly with an inexpensive jig.
