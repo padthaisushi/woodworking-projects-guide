@@ -5,6 +5,17 @@ publishDate: 2026-08-12
 keywords: ["best wood glue for beginners", "how to choose wood glue", "wood glue types explained"]
 offerKey: "primary"
 category: "Tools & Materials"
+faqs:
+  - question: "How long should I clamp wood glue?"
+    answer: "For standard PVA (yellow) glue, many manufacturers suggest roughly 30 to 60 minutes of clamping for unstressed joints in a warm room. Cold, humid shops and dense hardwoods take longer, so always check the time printed on your bottle."
+  - question: "How long before I can sand or screw a glued joint?"
+    answer: "Clamp time is not the same as cure time. A joint can feel solid after an hour, but most PVA glues need around 24 hours before you put real stress on it. Light sanding of dried squeeze-out is usually fine after a few hours; heavy loads and driving screws through the joint are better left until the glue has fully cured."
+  - question: "Is wood glue stronger than screws?"
+    answer: "In a well-fitted long-grain joint, a cured PVA glue line is often stronger than the wood around it. Glue is much weaker on end grain, though, which is why butt joints are usually reinforced with screws, dowels, or pocket screws."
+  - question: "Can I use regular wood glue outdoors?"
+    answer: "Standard interior PVA glue is not meant for wet conditions. For planters, birdhouses, and garden furniture, use a glue labeled waterproof or exterior-rated, such as a Type I or Type II PVA, polyurethane glue, or epoxy."
+  - question: "How do I remove dried glue before staining?"
+    answer: "Scrape off hardened squeeze-out with a sharp chisel or card scraper, then sand the area. Stain will not soak into wood that has a thin film of glue on it, so check under raking light before you apply any finish."
 ---
 
 Most woodworking glue-ups fail from either the wrong glue choice or poor clamping technique, not the wood itself. Here's how to pick the right adhesive.
@@ -33,7 +44,8 @@ Most woodworking glue-ups fail from either the wrong glue choice or poor clampin
 
 - Using standard PVA glue on an outdoor project, leading to joint failure after rain exposure.
 - Under-clamping, which is one of the most common reasons glue joints fail even with the right adhesive.
-- Not wiping excess glue before it dries, which can block stain absorption and leave visible blotches.
+- Not wiping excess glue before it dries, which can block stain absorption and leave visible blotches (see our [wood finishing guide](../how-to-finish-wood/)).
+- Driving screws close to the end of a glued board without a pilot hole, which can crack it — our [guide to screwing into wood without splitting](../screw-into-wood-without-splitting/) has a pilot hole chart.
 
 ## Getting Glue-Ups Right Every Time
 

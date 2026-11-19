@@ -5,6 +5,17 @@ publishDate: 2026-08-16
 keywords: ["how to finish wood", "stain vs paint wood", "wood sealant guide"]
 offerKey: "primary"
 category: "Techniques & Skills"
+faqs:
+  - question: "Do I need to seal wood after staining?"
+    answer: "Usually, yes. Most stains add color but very little protection. A clear topcoat such as polyurethane or a wipe-on finish protects the surface from moisture and wear, especially on tables, shelves, and anything outdoors. Check that the stain and topcoat are compatible."
+  - question: "How long should stain dry before applying polyurethane?"
+    answer: "It depends on the product, temperature, and humidity. Many oil-based stains need several hours to overnight before a topcoat, and some recommend longer in cool or damp weather. Follow the drying time on the can and make sure the surface is no longer tacky."
+  - question: "Why does my pine stain look blotchy?"
+    answer: "Pine and other softwoods absorb stain unevenly, so some areas soak up much more color than others. A pre-stain wood conditioner, a gel stain, or switching to paint all help. Always test on a scrap from the same board first."
+  - question: "Can I paint over stained wood?"
+    answer: "Generally yes, as long as the stain is fully dry and the surface is clean. Scuff-sand lightly and use a primer, especially over oil-based stain or a glossy topcoat, so the paint adheres well."
+  - question: "Is it safe to finish wood indoors?"
+    answer: "Many finishes give off fumes, and some are flammable. Work in a well-ventilated space, wear gloves and a respirator suited to the product, and keep heat sources away. Rags soaked in oil-based finishes can self-heat and catch fire, so lay them flat outdoors to dry or store them in a sealed metal container filled with water before disposal."
 ---
 
 Finishing protects your project and determines much of its final look — choosing the right approach (and applying it well) makes a bigger difference than most beginners expect.
@@ -14,6 +25,8 @@ Finishing protects your project and determines much of its final look — choosi
 1. **Stain.** Enhances the wood's natural grain and color without hiding it. Best for higher-quality wood you want to showcase, like oak or walnut furniture pieces.
 2. **Paint.** Fully covers the wood, hiding grain and imperfections — a practical choice for budget woods like pine, or projects where color matters more than grain.
 3. **Clear sealant (polyurethane, lacquer, oil finishes).** Protects the wood while keeping its natural, unstained appearance — often used alone or as a topcoat over stain.
+
+Not sure which wood to start with? Our guide to the [best wood for beginners](../best-wood-for-beginners/) covers how common species take stain and paint.
 
 ## How to Choose
 
