@@ -5,6 +5,17 @@ publishDate: 2026-08-14
 keywords: ["basic wood joinery techniques", "beginner wood joints", "types of wood joints explained"]
 offerKey: "primary"
 category: "Techniques & Skills"
+faqs:
+  - question: "What is the strongest beginner wood joint?"
+    answer: "Among the joints in this guide, glued dadoes and rabbets are usually the strongest because they add long-grain glue surface and mechanical support. Pocket-hole joints are also strong for their effort. A plain butt joint is the weakest on its own, because end grain does not hold glue well, so it needs screws, nails, or another reinforcement."
+  - question: "Do I need glue if I use screws?"
+    answer: "For most furniture and boxes, use both. Glue makes the joint stiff and stops it from slowly loosening, while screws hold the parts tight as the glue dries and add strength where end grain is involved. Skip glue only when you want to take the project apart later."
+  - question: "Can I cut dadoes and rabbets without a table saw?"
+    answer: "Yes. A router with a straight bit and a clamped straightedge guide works well, and a hand saw plus a chisel works for small pieces. Make test cuts in scrap first and check the fit with the actual board that will go into the groove."
+  - question: "Are pocket-hole joints strong enough for furniture?"
+    answer: "For many beginner furniture pieces such as face frames, bookshelves, and simple tables, pocket-hole joints with glue are generally strong enough. Use the screw length and type recommended for your jig and board thickness, and follow the jig maker's instructions."
+  - question: "Why don't my miter joints close tightly?"
+    answer: "Small errors in the angle add up: if each piece is slightly off from 45 degrees, the corner opens on one side. Check your saw's angle with a test cut on scrap, cut matching pieces with the same setup, and make sure opposite parts are exactly the same length."
 ---
 
 You don't need advanced joinery to build strong, good-looking projects — a handful of basic joints cover the vast majority of beginner and intermediate builds.
@@ -27,7 +38,9 @@ You don't need advanced joinery to build strong, good-looking projects — a han
 
 - Relying only on glue for butt joints without reinforcement (screws, nails, or pocket holes), leading to weaker joints over time.
 - Cutting dadoes or rabbets slightly oversized, resulting in a loose, wobbly fit.
-- Skipping a dry fit before gluing, making it harder to catch joint problems before they're permanent.
+- Skipping a dry fit before gluing, making it harder to catch joint problems before they're permanent. Accurate joints start with accurate layout — see [how to measure and mark wood accurately](../how-to-measure-and-mark-wood/) and [how to choose the right wood glue](../choose-the-right-wood-glue/).
+
+**Safety note:** Router and saw cuts for dadoes, rabbets, and miters throw chips and dust. Wear safety glasses and hearing protection, clamp the workpiece, and keep hands clear of the bit or blade. See our [woodworking safety tips for beginners](../woodworking-safety-tips-for-beginners/).
 
 ## Building Joinery Skills Progressively
 
