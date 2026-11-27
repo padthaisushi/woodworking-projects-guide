@@ -24,6 +24,7 @@ Starting with small, achievable projects builds real skill and confidence faster
 2. **A basic wooden box** — introduces squaring and simple joinery.
 3. **A cutting board** — practices flat, even sanding and food-safe finishing.
 4. **Coasters** — a tiny, low-risk project for practicing clean cuts and finishing.
+   - Another tiny one: a [phone stand cut from a 2x4 scrap](../scrap-wood-phone-stand/) with only a hand saw and a chisel — a quick handmade gift.
 5. **A key holder or wall hook rack** — combines a shelf-like base with basic hardware installation.
 6. **A birdhouse** — introduces angled cuts and functional design.
 7. **A step stool** — a compact project that introduces basic leg-and-frame construction.
